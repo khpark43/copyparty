@@ -1567,7 +1567,7 @@ class Up2k(object):
         files: list[tuple[int, int, str]] = []
         fat32 = True
         cv = vcv = acv = ""
-        e_d = {}
+        e_d = {"nodirsz": True}
 
         scan_pr_s = self.args.scan_pr_s
 
@@ -1813,7 +1813,7 @@ class Up2k(object):
                 at = 0
                 un = ""
 
-            # skip upload hooks by not providing vflags
+            # skip upload hooks; directory stats are already rebuilt above
             self.db_add(db.c, e_d, rd, fn, lmod, sz, "", "", wark, wark, "", un, ip, at)
             db.n += 1
             db.nf += 1
